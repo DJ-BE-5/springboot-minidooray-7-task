@@ -1,0 +1,22 @@
+###
+POST http://localhost:8080/projects
+Content-Type: application/json
+
+{
+  "projectName":"secondProject"
+}
+
+###
+POST http://localhost:8080/projects/2/member
+Content-Type: application/json
+
+{
+  "userId": "testUserUserName",
+  "isAdmin": "2"
+}
+
+###
+GET http://localhost:8080/projects/userName
+
+###
+GET http://localhost:8080/projects/project/1
