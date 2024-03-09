@@ -49,6 +49,4 @@ public class ProjectRestController {
 
         return ResponseEntity.ok().body(responseDto);
     }
-
-
 }
