@@ -3,16 +3,15 @@ POST http://localhost:8080/projects
 Content-Type: application/json
 
 {
-  "projectName":"secondProject"
+  "projectName":"fdProject"
 }
 
 ###
-POST http://localhost:8080/projects/2/member
+POST http://localhost:8080/projects/1/member
 Content-Type: application/json
 
 {
-  "userId": "testUserUserName",
-  "isAdmin": "2"
+  "userId": "u2525424"
 }
 
 ###

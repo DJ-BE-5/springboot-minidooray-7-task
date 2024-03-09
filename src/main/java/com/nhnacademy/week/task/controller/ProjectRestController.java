@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -18,7 +19,7 @@ public class ProjectRestController {
     }
 
     @PostMapping("/projects")
-    public ResponseEntity<ProjectSaveResponseDto> createProject(@RequestBody ProjectSaveRequestDto requestDto,
+    public ResponseEntity<ProjectSaveResponseDto> createProject(@Valid @RequestBody ProjectSaveRequestDto requestDto,
                                                                 HttpServletRequest request){
 //        String userId = request.getSession().getAttribute("userId").toString();
 //        ProjectSaveResponseDto responseDto = projectService.createProject(requestDto,userId);
@@ -29,7 +30,7 @@ public class ProjectRestController {
 
     @PostMapping("/projects/{projectId}/member")
     public ResponseEntity<ProjectSaveMemberResponseDto> addUserToProject(@PathVariable("projectId") Long projectId,
-                                                                         @RequestBody ProjectSaveMemberRequestDto requestDto){
+                                                                         @Valid @RequestBody ProjectSaveMemberRequestDto requestDto){
         ProjectSaveMemberResponseDto responseDto = projectService.addMemberToProject(projectId, requestDto);
 
         return ResponseEntity.ok().body(responseDto);
@@ -48,4 +49,6 @@ public class ProjectRestController {
 
         return ResponseEntity.ok().body(responseDto);
     }
+
+
 }
