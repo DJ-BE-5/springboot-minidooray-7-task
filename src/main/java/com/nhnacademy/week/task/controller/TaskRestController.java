@@ -23,9 +23,9 @@ public class TaskRestController {
     public ResponseEntity<TaskResponseDto> createTask(@PathVariable("projectId") Long projectId,
                                                       @Valid @RequestBody TaskPostRequestDto requestDto,
                                                       HttpServletRequest request){
-//        String userId = request.getSession().getAttribute("user").toString();
-        //TaskResponseDto respDto = taskService.createTasks(projectId, userId, requestDto);
-        TaskResponseDto respDto = taskService.createTasks(projectId, "userName", requestDto);
+        String userId = request.getSession().getAttribute("user").toString();
+        TaskResponseDto respDto = taskService.createTasks(projectId, userId, requestDto);
+//        TaskResponseDto respDto = taskService.createTasks(projectId, "userName", requestDto);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(respDto);
     }
@@ -50,9 +50,9 @@ public class TaskRestController {
     @GetMapping("/projects/{projectId}/tasks")
     public ResponseEntity<List<TaskResponseDto>> getAllTasks(@PathVariable("projectId") Long projectId,
                                                              HttpServletRequest req){
-//        String userId = req.getSession().getAttribute("userId").toString();
-//        List<TaskResponseDto> responseDtoList = taskService.getAllTasks(projectId, userId);
-        List<TaskResponseDto> responseDtoList = taskService.getAllTasks(projectId, "userName");
+        String userId = req.getSession().getAttribute("userId").toString();
+        List<TaskResponseDto> responseDtoList = taskService.getAllTasks(projectId, userId);
+//        List<TaskResponseDto> responseDtoList = taskService.getAllTasks(projectId, "userName");
 
         return ResponseEntity.ok().body(responseDtoList);
     }

@@ -21,9 +21,9 @@ public class ProjectRestController {
     @PostMapping("/projects")
     public ResponseEntity<ProjectSaveResponseDto> createProject(@Valid @RequestBody ProjectSaveRequestDto requestDto,
                                                                 HttpServletRequest request){
-//        String userId = request.getSession().getAttribute("userId").toString();
-//        ProjectSaveResponseDto responseDto = projectService.createProject(requestDto,userId);
-        ProjectSaveResponseDto responseDto = projectService.createProject(requestDto,"userName");
+        String userId = request.getSession().getAttribute("userId").toString();
+        ProjectSaveResponseDto responseDto = projectService.createProject(requestDto,userId);
+//        ProjectSaveResponseDto responseDto = projectService.createProject(requestDto,"userName");
 
         return ResponseEntity.status(HttpStatus.CREATED).body(responseDto);
     }
